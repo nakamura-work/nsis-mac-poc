@@ -12,9 +12,14 @@ jobs:
           brew install makensis
       - name: Do build
         run: |
-          makensis setup.nsi
+          makensis alphanumeric_ascii.nsi
+          makensis hiragana_utf8.nsi
+      - name: Dump hex
+        run: |
+          hexdump -C dist/alphanumeric_ascii.exe > dist/alphanumeric_ascii_dump.txt
+          hexdump -C dist/hiragana_utf8.exe > dist/hiragana_utf8_dump.txt
       - name: Archive Installer
         uses: actions/upload-artifact@v4
         with:
-          name: Installer
-          path: Install.exe
+          name: Sonoma
+          path: dist
