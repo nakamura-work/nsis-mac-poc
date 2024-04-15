@@ -12,6 +12,7 @@ jobs:
           brew install makensis
       - name: Do build
         run: |
+          mkdir -p dist
           makensis alphanumeric_ascii.nsi
           makensis hiragana_utf8.nsi
       - name: Dump hex
